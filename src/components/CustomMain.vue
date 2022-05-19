@@ -43,14 +43,13 @@ export default {
   height: calc(100vh - 100px);
   background-color: #1e2d3b;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 
   .contenitore-brani {
-    width: 75%;
+    width: 70%;
     height: 90%;
     padding: 1rem;
-    background-color: azure;
     display: flex;
     flex-wrap: wrap;
   }

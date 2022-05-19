@@ -20,10 +20,28 @@ export default {
 @import "../style/common.scss";
 
 .contenitore-card {
-  width: calc(100% / 5);
+  width: calc(100% / 5 - 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #2e3a46;
+  margin: 1rem;
+  padding: 1.2rem;
+
+  img {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  small {
+    color: #6d6f72;
+  }
 }
 </style>
