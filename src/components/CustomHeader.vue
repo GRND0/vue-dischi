@@ -1,7 +1,10 @@
 <template>
   <header>
     <div class="barra-logo">
-      <i class="fab fa-spotify"></i>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+        alt=""
+      />
     </div>
   </header>
 </template>
@@ -17,7 +20,14 @@ export default {
 
 .barra-logo {
   width: 100%;
-  height: 100px;
+  height: 80px;
   background-color: #2e3a46;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 70%;
+  }
 }
 </style>

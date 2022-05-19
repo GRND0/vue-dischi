@@ -40,7 +40,7 @@ export default {
 
 .wrapper {
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 80px);
   background-color: #1e2d3b;
   display: flex;
   justify-content: center;
