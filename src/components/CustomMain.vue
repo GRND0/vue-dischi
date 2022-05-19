@@ -1,7 +1,10 @@
 <template>
   <main>
     <div class="wrapper">
-      <div class="contenitore-brani">
+      <div v-if="caricamento" class="caricamento">
+        <CardCaricamento />
+      </div>
+      <div v-else class="contenitore-brani">
         <CardBrani v-for="(item, index) in brani" :key="index" :brani="item" />
       </div>
     </div>
@@ -10,18 +13,20 @@
 
 <script>
 import CardBrani from "./CardBrani.vue";
+import CardCaricamento from "./CardCaricamento.vue";
 import axios from "axios";
 
 export default {
   name: "CustomMain",
   components: {
     CardBrani,
+    CardCaricamento,
   },
 
   data: function () {
     return {
       brani: [],
-      loading: true,
+      caricamento: true,
     };
   },
   created() {
@@ -29,7 +34,7 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((resp) => {
         this.brani = resp.data.response;
-        this.loading = false;
+        this.caricamento = false;
       });
   },
 };
