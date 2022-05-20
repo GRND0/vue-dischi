@@ -1,11 +1,14 @@
 <template>
   <main>
+    <div class="selettore">
+      <CustomSelettore @opzione="genereSelezionato($event)" />
+    </div>
     <div class="wrapper">
       <div v-if="caricamento" class="caricamento">
         <CardCaricamento />
       </div>
       <div v-else class="contenitore-brani">
-        <CardBrani v-for="(item, index) in brani" :key="index" :brani="item" />
+        <CardBrani v-for="(item, index) in serieFiltrate" :key="index" :brani="item" />
       </div>
     </div>
   </main>
@@ -14,6 +17,7 @@
 <script>
 import CardBrani from "./CardBrani.vue";
 import CardCaricamento from "./CardCaricamento.vue";
+import CustomSelettore from "./CustomSelettore.vue";
 import axios from "axios";
 
 export default {
@@ -21,12 +25,14 @@ export default {
   components: {
     CardBrani,
     CardCaricamento,
+    CustomSelettore,
   },
 
   data: function () {
     return {
       brani: [],
       caricamento: true,
+      genereMusicale: "",
     };
   },
   created() {
@@ -36,6 +42,25 @@ export default {
         this.brani = resp.data.response;
         this.caricamento = false;
       });
+  },
+
+  methods: {
+    genereSelezionato(genere) {
+      this.genereMusicale = genere;
+    },
+
+    serieFiltrate() {
+      const arrayFiltrato = this.brani.filter((item) => {
+        return item.brani.includes(this.genereMusicale);
+      });
+      return arrayFiltrato;
+    },
+
+  },
+
+  computed: {
+
+
   },
 };
 </script>
