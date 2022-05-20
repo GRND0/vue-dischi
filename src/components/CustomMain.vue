@@ -32,7 +32,7 @@ export default {
     return {
       brani: [],
       caricamento: true,
-      genereMusicale: "",
+      genereMusicale: "All",
     };
   },
   created() {
@@ -49,17 +49,21 @@ export default {
       this.genereMusicale = genere;
     },
 
-    serieFiltrate() {
-      const arrayFiltrato = this.brani.filter((item) => {
-        return item.brani.includes(this.genereMusicale);
-      });
-      return arrayFiltrato;
-    },
+
 
   },
 
   computed: {
-
+    serieFiltrate() {
+      if (this.genereMusicale == "All") {
+        return this.brani
+      } else {
+        const arrayFiltrato = this.brani.filter((item) => {
+          return item.genre == this.genereMusicale;
+        });
+        return arrayFiltrato
+      }
+    },
 
   },
 };

@@ -5,7 +5,7 @@
     <select
       v-model="selezione"
       @change="$emit('opzione', selezione)" id="selettore-genere">
-      <option value="">Scegli un genere musicale</option>
+      <option value="All">Tutti i generi</option>
       <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
       <option value="Jazz">Jazz</option>
@@ -19,7 +19,7 @@ export default {
   name: "CustomSelettore",
   data: function () {
     return {
-      selezione: "",
+      selezione: "All",
     };
   },
 };
