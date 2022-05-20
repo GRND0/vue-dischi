@@ -1,14 +1,14 @@
 <template>
   <main>
     <div class="selettore">
-      <CustomSelettore @opzione="genereSelezionato($event)" @opzione-artista="artistaSelezionato($event)" />
+      <CustomSelettore @opzione="genereSelezionato($event)" @opzioneArtista="artistaSelezionato($event)" />
     </div>
     <div class="wrapper">
       <div v-if="caricamento" class="caricamento">
         <CardCaricamento />
       </div>
       <div v-else class="contenitore-brani">
-        <CardBrani v-for="(item, index) in generiFiltrati, artistiFiltrati" :key="index" :brani="item" />
+        <CardBrani v-for="(item, index) in generiFiltrati" :key="index" :brani="item" />
       </div>
     </div>
   </main>
@@ -32,8 +32,8 @@ export default {
     return {
       brani: [],
       caricamento: true,
-      genereMusicale: "All",
-      artista: "All",
+      genereMusicale: "",
+      artista: "",
     };
   },
   created() {
@@ -57,30 +57,11 @@ export default {
 
   computed: {
     generiFiltrati() {
-      if (this.genereMusicale == "All") {
-        return this.brani
-      } else {
-        const arrayFiltrato = this.brani.filter((item) => {
-          return item.genre == this.genereMusicale;
+        return this.brani.filter((item) => {
+          return item.genre.includes(this.genereMusicale) && item.author.includes(this.artista) ;
         });
-        return arrayFiltrato
       }
-    },
-
-    artistiFiltrati() {
-      if (this.artista == "All") {
-        return this.brani
-      } else {
-        const arrayFiltrato = this.brani.filter((item) => {
-          return item.author == this.artista;
-        });
-        return arrayFiltrato
-      }
-    },
-
-
-
-  },
+    }
 };
 </script>
 
